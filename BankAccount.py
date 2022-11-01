@@ -1,4 +1,5 @@
 import random
+import math
 
 class BankAccount:
     def __init__(self, full_name, account_number = ['****'], routing_number = 810273756, balance = 0):
@@ -15,7 +16,8 @@ class BankAccount:
         self.balance -= amount
         if self.balance < amount:
          print('Insufficient funds.')
-         self.balance -= 10
+         self.balance += amount - 10
+        #  self.balance -= 10
         else:
             print(f'Amount Withdrawn: ${amount}')
 
@@ -24,8 +26,8 @@ class BankAccount:
         return self.balance
 
     def add_interest(self):
-        interest = self.balance *  0.00083
-        return interest
+        interest = self.balance * 1.00083
+        self.balance = math.floor(interest*100)/100
 
     def number_generator(self):
         for i in range(4):
@@ -41,5 +43,6 @@ class BankAccount:
 account1 = BankAccount('Hello Kitty')
 account1.number_generator()
 account1.deposit(100)
-account1.withdraw(200)
+# account1.add_interest()
+# account1.withdraw()
 account1.print_receipt()
