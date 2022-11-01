@@ -10,16 +10,15 @@ class BankAccount:
 
     def deposit(self, amount):
         self.balance += amount
-        print(f'Amount deposited: ${amount}')
+        print(f'Amount deposited: ${amount}   New balance: ${self.balance}')
 
     def withdraw(self, amount):
         self.balance -= amount
         if self.balance < amount:
          print('Insufficient funds.')
          self.balance += amount - 10
-        #  self.balance -= 10
         else:
-            print(f'Amount Withdrawn: ${amount}')
+            print(f'Amount Withdrawn: ${amount}   New balance: ${self.balance}')
 
     def get_balance(self):
         print(f'Your current balance is: {self.balance}')
@@ -33,7 +32,6 @@ class BankAccount:
         for i in range(4):
             self.account_number.append(random.randint(0,9))
         self.account_number = (''.join(str(e) for e in self.account_number))
-        # print(self.account_number)
 
     def print_receipt(self):
         print(f'{self.full_name} \nAccount No.: {self.account_number}\nRouting No.: {self.routing_number}\nBalance: ${self.balance}')
@@ -41,8 +39,24 @@ class BankAccount:
 
 
 account1 = BankAccount('Hello Kitty')
-account1.number_generator()
-account1.deposit(100)
-# account1.add_interest()
+# account1.number_generator()
+# account1.deposit(4000)
 # account1.withdraw()
-account1.print_receipt()
+# account1.add_interest()
+# account1.get_balance()
+# account1.print_receipt()
+
+account2 = BankAccount('Mitchell Hudson', '****1592')
+# account2.deposit(100)
+# account2.withdraw()
+# account2.add_interest()
+# account1.get_balance()
+# account2.print_receipt()
+
+account3 = BankAccount('Isabella Devassy')
+# account3.number_generator()
+# account3.deposit()
+# account3.withdraw()
+# account3.add_interest()
+# account1.get_balance()
+# account3.print_receipt()
