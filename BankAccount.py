@@ -1,7 +1,7 @@
 import random
 
 class BankAccount:
-    def __init__(self, full_name, account_number = [], routing_number = 810273756, balance = 0):
+    def __init__(self, full_name, account_number = ['****'], routing_number = 810273756, balance = 0):
         self.full_name = full_name
         self.account_number = account_number
         self.routing_number = routing_number
@@ -9,7 +9,7 @@ class BankAccount:
 
     def deposit(self, amount):
         self.balance += amount
-        print(f'Amount deposited: {amount}')
+        print(f'Amount deposited: ${amount}')
 
     def withdraw(self, amount):
         self.balance -= amount
@@ -27,15 +27,19 @@ class BankAccount:
         interest = self.balance *  0.00083
         return interest
 
-    def number_gen(self, account_number):
-        for num in range(0, 8):
-            account_number.append(random.randint(0,9))
-        print(account_number)
+    def number_generator(self):
+        for i in range(4):
+            self.account_number.append(random.randint(0,9))
+        self.account_number = (''.join(str(e) for e in self.account_number))
+        # print(self.account_number)
 
-    def print_receipt(self, full_name, account_number, routing_number, balance):
-        print(f'{full_name} \nAccount No.: {account_number}\nRouting No.: {routing_number}\nBalance: ${balance}')
+    def print_receipt(self):
+        print(f'{self.full_name} \nAccount No.: {self.account_number}\nRouting No.: {self.routing_number}\nBalance: ${self.balance}')
 
 
 
 account1 = BankAccount('Hello Kitty')
-print(account1)
+account1.number_generator()
+account1.deposit(100)
+account1.withdraw(200)
+account1.print_receipt()
